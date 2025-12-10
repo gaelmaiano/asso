@@ -1,5 +1,3 @@
-
-    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -162,11 +160,11 @@
         }
 
         ul li::before {
-            content: "⚠️";
+            content: "✓";
             position: absolute;
             left: 0;
             top: 0.2rem;
-            color: var(--dark);
+            color: var(--secondary);
             font-weight: bold;
             font-size: 1.1rem;
         }
@@ -174,6 +172,11 @@
         .limitation ul li::before {
             content: "🚫";
             color: #e74c3c;
+        }
+
+        .firstaid ul li::before {
+            content: "🩹";
+            color: var(--primary);
         }
 
         /* ===== CALL TO ACTION ===== */
@@ -239,6 +242,7 @@
         section:nth-child(3) { animation-delay: 0.3s; }
         section:nth-child(4) { animation-delay: 0.4s; }
         section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
@@ -325,6 +329,23 @@
             </p>
         </section>
 
+        <section class="firstaid">
+            <h2>🩹 Trousse de secours cybersécurité</h2>
+            <p>
+                Une sélection minimaliste d’outils <strong>gratuits, libres et simples</strong> pour protéger l’essentiel — sans devenir expert·e.
+            </p>
+            <ul>
+                <li><strong>KeePassXC</strong> — Coffre-fort chiffré pour vos mots de passe. Fini les post-its et les Excel non sécurisés.</li>
+                <li><strong>Fail2ban</strong> — Bloque automatiquement les tentatives de piratage (SSH, WordPress, etc.) en bannissant les IP malveillantes.</li>
+                <li><strong>Pi-hole</strong> — Filtre réseau qui bloque pubs, trackers et domaines malveillants <em>avant</em> qu’ils n’atteignent vos postes.</li>
+                <li><strong>ModSecurity + CRS</strong> — Bouclier gratuit devant votre site web pour bloquer injections, XSS et autres attaques automatiques.</li>
+                <li><strong>Ubuntu LTS</strong> — Système d’exploitation stable, sécurisé, sans publicité, idéal pour les postes bureautiques.</li>
+            </ul>
+            <p>
+                <em>Bonus :</em> activez la double authentification (2FA) partout, mettez à jour vos logiciels mensuellement, et sauvegardez vos données.
+            </p>
+        </section>
+
         <section>
             <h2>Nos outils open source</h2>
             <p>
@@ -335,6 +356,8 @@
                 <li><strong>KeePassXC</strong> — Gérez tous vos mots de passe dans un coffre-fort chiffré, accessible uniquement par vous.</li>
                 <li><strong>Wazuh</strong> — Surveillez en temps réel les menaces sur vos machines avec une solution open source puissante.</li>
                 <li><strong>Nuclei</strong> — Détectez automatiquement les failles de sécurité <em>sur vos propres services</em> (après installation et formation).</li>
+                <li><strong>ModSecurity + CRS</strong> — Un bouclier devant votre site web qui bloque les attaques courantes, sans intervention quotidienne.</li>
+                <li><strong>Pi-hole</strong> — Protégez tout votre réseau local contre le tracking et les malwares via le filtrage DNS.</li>
             </ul>
         </section>
 
