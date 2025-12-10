@@ -1,781 +1,125 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cyber-Secours Brest - Association proposant une Boîte à Outils Libre pour la sécurité numérique solidaire des PME et associations">
-    <title>Cyber-Secours Brest - Association de Sécurité Numérique</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[Nom de l'Association] – Sécurité numérique pour les associations et TPE</title>
     <style>
-        /* Variables CSS et reset */
-        :root {
-            --couleur-primaire: #2563eb; /* Bleu plus moderne */
-            --couleur-primaire-hover: #1d4ed8;
-            --couleur-association: #7c3aed; /* Violet pour identifier l'association */
-            --couleur-secondaire: #334155; /* Gris foncé plus doux */
-            --couleur-fond: #f8fafc; /* Gris très clair */
-            --couleur-texte: #1e293b; /* Noir bleuté */
-            --couleur-surface: #ffffff;
-            --couleur-bordure: #e2e8f0;
-            --couleur-texte-secondaire: #64748b;
-            --couleur-openvas: #059669; /* Vert plus sobre */
-            --border-radius: 12px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 1.5rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 3rem;
-        }
-
-        /* Reset et base */
-        * {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #f9f9f9;
+            color: #333;
         }
-
-        html {
-            scroll-behavior: smooth;
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
         }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            background-color: var(--couleur-fond);
-            color: var(--couleur-texte);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
         }
-
-        /* Typographie améliorée */
-        h1, h2, h3, h4 {
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-association));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        h2 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            color: var(--couleur-secondaire);
-            position: relative;
-            padding-bottom: var(--spacing-xs);
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--couleur-primaire), var(--couleur-association));
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            color: var(--couleur-secondaire);
-        }
-
-        p {
-            margin-bottom: var(--spacing-sm);
-            color: var(--couleur-texte-secondaire);
-        }
-
-        /* Conteneur principal */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
-
-        /* Bannière Association */
-        .association-banner {
-            background: linear-gradient(135deg, var(--couleur-association) 0%, #8b5cf6 100%);
-            color: white;
-            padding: var(--spacing-sm) 0;
-            text-align: center;
-            font-weight: 500;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .association-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            background: rgba(255, 255, 255, 0.15);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            padding: var(--spacing-xl) 0;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .header-subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            color: var(--couleur-primaire);
-            font-weight: 500;
-            margin-top: var(--spacing-sm);
-        }
-
-        .association-mention {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--couleur-association), #a78bfa);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            margin-top: var(--spacing-md);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .header-icon {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Sections */
-        .section {
-            background: var(--couleur-surface);
-            border-radius: var(--border-radius);
-            padding: var(--spacing-xl);
-            margin-bottom: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Section à propos */
-        .about-association {
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-            border: 2px solid var(--couleur-association);
-        }
-
-        .association-values {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-
-        .value-item {
-            text-align: center;
-            padding: var(--spacing-md);
+        section {
+            margin-bottom: 2rem;
             background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-sm);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-
-        .value-icon {
-            font-size: 2rem;
-            margin-bottom: var(--spacing-sm);
-            color: var(--couleur-association);
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
         }
-
-        /* Grille des services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
+        ul.tools li {
+            margin-bottom: 0.7rem;
         }
-
-        .service-card {
-            background: var(--couleur-fond);
-            border-radius: var(--border-radius);
-            padding: var(--spacing-lg);
-            border: 1px solid var(--couleur-bordure);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            border-color: var(--couleur-primaire);
-            transform: translateY(-4px);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: var(--spacing-md);
-            display: inline-block;
-        }
-
-        /* Section OpenVAS */
-        .openvas-section {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border: 2px solid var(--couleur-openvas);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .openvas-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(5, 150, 105, 0.1) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .openvas-header {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .openvas-icon {
-            font-size: 3rem;
-            background: linear-gradient(135deg, var(--couleur-openvas), #16a34a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .openvas-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-lg);
-            position: relative;
-            z-index: 1;
-        }
-
-        .openvas-benefits {
-            background: white;
-            padding: var(--spacing-lg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .openvas-benefits ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .openvas-benefits li {
-            padding: var(--spacing-sm) 0;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .openvas-benefits li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--couleur-openvas);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .openvas-offer {
-            background: white;
-            padding: var(--spacing-lg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-sm);
-            border: 2px solid var(--couleur-openvas);
+        .cta {
             text-align: center;
+            margin-top: 2rem;
         }
-
-        .gratuit-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--couleur-openvas), #16a34a);
+        .cta a {
+            background-color: #27ae60;
             color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 600;
-            margin: var(--spacing-md) 0;
-            font-size: 1.1rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .offer-details {
-            margin: var(--spacing-lg) 0;
-        }
-
-        .offer-item {
-            display: flex;
-            justify-content: space-between;
-            padding: var(--spacing-sm) 0;
-            border-bottom: 1px solid var(--couleur-bordure);
-        }
-
-        .openvas-cta {
-            display: flex;
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-lg);
-        }
-
-        /* CTA amélioré */
-        .cta-section {
-            text-align: center;
-            padding: var(--spacing-xl);
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: var(--border-radius);
-            border: 2px solid var(--couleur-association);
-        }
-
-        .cta-title {
-            color: var(--couleur-secondaire);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            background: linear-gradient(135deg, var(--couleur-association), #8b5cf6);
-            color: white;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-md);
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
         }
-
-        .cta-button:hover {
-            background: linear-gradient(135deg, #6d28d9, var(--couleur-association));
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+        .cta a:hover {
+            background-color: #219653;
         }
-
-        .openvas-button {
-            background: linear-gradient(135deg, var(--couleur-openvas), #16a34a);
-            flex: 1;
-            text-align: center;
-        }
-
-        .openvas-button:hover {
-            background: linear-gradient(135deg, #047857, var(--couleur-openvas));
-        }
-
-        /* Footer */
         footer {
             text-align: center;
-            padding: var(--spacing-xl) 0;
-            color: var(--couleur-texte-secondaire);
+            padding: 1.5rem;
+            background-color: #ecf0f1;
+            color: #7f8c8d;
             font-size: 0.9rem;
-            border-top: 1px solid var(--couleur-bordure);
-            margin-top: var(--spacing-xl);
         }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .legal-info {
-            background: var(--couleur-fond);
-            padding: var(--spacing-md);
-            border-radius: var(--border-radius);
-            margin-top: var(--spacing-md);
-            font-size: 0.8rem;
-            border: 1px solid var(--couleur-bordure);
-        }
-
-        .association-id {
-            color: var(--couleur-association);
-            font-weight: 600;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 var(--spacing-sm);
-            }
-
-            .section {
-                padding: var(--spacing-lg);
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .association-values {
-                grid-template-columns: 1fr;
-            }
-
-            .openvas-content {
-                grid-template-columns: 1fr;
-            }
-
-            .openvas-cta {
-                flex-direction: column;
-            }
-
-            header {
-                padding: var(--spacing-lg) 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            :root {
-                --border-radius: 8px;
-            }
-
-            .section {
-                padding: var(--spacing-md);
-            }
-
-            .cta-button {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Accessibilité */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Focus states pour accessibilité */
-        a:focus,
-        button:focus {
-            outline: 3px solid var(--couleur-association);
-            outline-offset: 2px;
-        }
-
-        /* Animation subtile pour les éléments */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <!-- Bannière Association -->
-    <div class="association-banner">
-        <div class="container">
-            <div class="association-badge">
-                <span>🏛️</span>
-                <span>Association Loi 1901 - Cyber-Secours Brest ATTENTION POUR LINSTANT LASSOCIATION N EST PAS ENCORE CREE J ATTENDS DE VOIR SI LA MAISON DU LIBRE DE BREST ACCEPTE D EN FAIRE UN SOUS SERVICE </span>
-            </div>
-        </div>
-    </div>
+
+    <header>
+        <h1>[Nom de l'Association]</h1>
+        <p>Renforcer la sécurité numérique des associations et TPE/PME</p>
+    </header>
 
     <div class="container">
-        <header class="animate-fade-in">
-            <div class="header-content">
-                <div class="header-icon">🛡️</div>
-                <h1>Cyber-Secours Brest</h1>
-                <p class="header-subtitle">Boîte à Outils Libre : Sécurité numérique solidaire pour PME et Associations</p>
-                <div class="association-mention">
-                    🏛️ Association à but non lucratif
-                </div>
-            </div>
-        </header>
 
-        <main>
-            <!-- Section à propos de l'association -->
-            <section class="section about-association animate-fade-in delay-1" aria-labelledby="about-title">
-                <h2 id="about-title">Qui sommes-nous ?</h2>
-                <p><strong>Cyber-Secours Brest est une association loi 1901 à but non lucratif</strong>, créée par des passionnés de sécurité informatique et de logiciels libres.</p>
-                <p>Notre mission : rendre accessible la cybersécurité aux structures qui en ont le plus besoin mais qui ont le moins de moyens.</p>
-                
-                <div class="association-values">
-                    <div class="value-item">
-                        <div class="value-icon">🤝</div>
-                        <h3>Solidarité</h3>
-                        <p>Accompagnement personnalisé et bienveillant sans but lucratif</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🔓</div>
-                        <h3>Logiciels Libres</h3>
-                        <p>Exclusivement des solutions Open Source pour garantir l'indépendance</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🎯</div>
-                        <h3>Accessibilité</h3>
-                        <p>Services gratuits pour les petites structures brestoises</p>
-                    </div>
-                </div>
-            </section>
+        <section>
+            <h2>Notre mission</h2>
+            <p>
+                Nous aidons les associations, les micro-entreprises et les TPE à sécuriser leurs systèmes informatiques, leurs données sensibles et leurs communications numériques — <strong>gratuitement</strong> ou à coût très réduit.
+            </p>
+            <p>
+                Dans un monde numérique en constante évolution, la cybersécurité n’est plus réservée aux grandes entreprises. C’est pourquoi nous mettons à disposition des outils modernes, libres et efficaces, adaptés aux besoins des petites structures.
+            </p>
+        </section>
 
-            <section class="section animate-fade-in delay-2" aria-labelledby="mission-title">
-                <h2 id="mission-title">Notre Mission : Sécuriser l'essentiel</h2>
-                <p>En tant qu'association, nous aidons les petites structures à renforcer leur sécurité grâce à des solutions <strong>professionnelles et gratuites</strong> (Open Source), sans coût de licence.</p>
-                <p>Notre approche repose sur l'autonomisation et le partage des connaissances pour une sécurité pérenne.</p>
-            </section>
+        <section>
+            <h2>Nos outils open source</h2>
+            <p>
+                Nous accompagnons les structures dans l’installation, la configuration et l’utilisation de solutions gratuites et open source, notamment :
+            </p>
+            <ul class="tools">
+                <li><strong>Ubuntu</strong> : un système d’exploitation libre, stable et sécurisé, idéal pour remplacer Windows ou macOS dans un environnement professionnel.</li>
+                <li><strong>KeePass</strong> : gestionnaire de mots de passe open source pour stocker et chiffrer vos identifiants sensibles en toute sécurité.</li>
+                <li><strong>Wazuh</strong> : plateforme de détection d’intrusion (IDS), surveillance de la sécurité et conformité, simple à déployer même sur une infrastructure réduite.</li>
+                <li><strong>Nuclei</strong> : outil de scan automatisé de vulnérabilités, rapide et efficace pour auditer vos applications web ou vos serveurs.</li>
+            </ul>
+        </section>
 
-            <section class="section animate-fade-in delay-2" aria-labelledby="services-title">
-                <h2 id="services-title">Services Proposés par l'association</h2>
-                <p class="section-intro">Basés exclusivement sur des solutions Open Source éprouvées</p>
-                
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="service-icon">💻</div>
-                        <h3>1. Déploiement de Wazuh (Surveillance 24/7)</h3>
-                        <p>Mise en place de l'outil SIEM/XDR Wazuh sur votre réseau pour détecter les tentatives d'intrusion, malwares et failles en temps réel. Garantie de conformité RGPD.</p>
-                        <p class="service-tag">🔒 Surveillance temps réel</p>
-                    </article>
+        <section>
+            <h2>Pourquoi nous faire confiance ?</h2>
+            <ul>
+                <li>équipe composée de bénévoles passionnés par la cybersécurité et le logiciel libre ;</li>
+                <li>accompagnement personnalisé et pédagogique (pas de jargon inutile !) ;</li>
+                <li>solutions 100 % gratuites, sans engagement, sans publicité ;</li>
+                <li>respect strict de la vie privée et des données de nos partenaires.</li>
+            </ul>
+        </section>
 
-                    <article class="service-card">
-                        <div class="service-icon">🐧</div>
-                        <h3>2. Migration et Sécurisation Linux (Ubuntu)</h3>
-                        <p>Installation d'Ubuntu sur les postes critiques. Réduction des coûts de licence avec un système d'exploitation stable et reconnu pour sa robustesse.</p>
-                        <p class="service-tag">💰 Économique & Sécurisé</p>
-                    </article>
+        <div class="cta">
+            <a href="mailto:contact@votreasso.org">Nous contacter</a>
+        </div>
 
-                    <article class="service-card">
-                        <div class="service-icon">🎓</div>
-                        <h3>3. Formation et Autonomie</h3>
-                        <p>Tutoriels simples et guides pratiques pour chaque outil. Notre objectif : vous rendre autonome dans la gestion des mises à jour et la lecture des alertes.</p>
-                        <p class="service-tag">📚 Apprentissage continu</p>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="service-icon">🔑</div>
-                        <h3>4. Outils Essentiels</h3>
-                        <p>Conseils et installation d'outils complémentaires (KeePassXC, solutions de sauvegarde chiffrée) pour une résilience complète face aux incidents.</p>
-                        <p class="service-tag">🛠️ Boîte à outils complète</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- NOUVELLE SECTION OPENVAS AJOUTÉE ICI -->
-            <section class="section openvas-section animate-fade-in delay-3" aria-labelledby="openvas-title">
-                <div class="openvas-header">
-                    <div class="openvas-icon">🛡️</div>
-                    <h2 id="openvas-title">Service OpenVAS : Analyse de vulnérabilités</h2>
-                </div>
-                
-                <p><strong>Votre site web d'association ou TPE/PME est-il vulnérable ?</strong> Nous pouvons vous aider à installer <strong>OpenVAS</strong> (maintenant Greenbone Vulnerability Manager), la solution open-source professionnelle de scan de vulnérabilités.</p>
-                
-                <div class="openvas-content">
-                    <div class="openvas-benefits">
-                        <h3>Ce qu'OpenVAS vous apporte :</h3>
-                        <ul>
-                            <li><strong>Analyse complète</strong> de votre site web ou infrastructure réseau</li>
-                            <li><strong>Détection des failles de sécurité</strong> connues (CVE)</li>
-                            <li><strong>Rapport détaillé</strong> avec niveau de criticité</li>
-                            <li><strong>Conseils de remédiation</strong> pour chaque vulnérabilité</li>
-                            <li><strong>Surveillance continue</strong> des nouvelles menaces</li>
-                            <li><strong>Solution 100% open-source</strong>, sans coûts de licence</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="openvas-offer">
-                        <div class="gratuit-badge">🎁 SERVICE GRATUIT</div>
-                        
-                        <p><strong>Comme tous nos services, l'installation d'OpenVAS est gratuite pour les petites structures.</strong></p>
-                        
-                        <div class="offer-details">
-                            <div class="offer-item">
-                                <span>Installation complète OpenVAS</span>
-                                <strong>✓ GRATUIT</strong>
-                            </div>
-                            <div class="offer-item">
-                                <span>Configuration pour votre infrastructure</span>
-                                <strong>✓ GRATUIT</strong>
-                            </div>
-                            <div class="offer-item">
-                                <span>Premier scan de sécurité</span>
-                                <strong>✓ GRATUIT</strong>
-                            </div>
-                            <div class="offer-item">
-                                <span>Formation à l'utilisation</span>
-                                <strong>✓ GRATUIT</strong>
-                            </div>
-                            <div class="offer-item">
-                                <span>Support initial</span>
-                                <strong>✓ GRATUIT</strong>
-                            </div>
-                        </div>
-                        
-                        <p style="margin: var(--spacing-md) 0; font-style: italic; color: var(--couleur-openvas);">
-                            "Notre engagement : une sécurité professionnelle accessible à tous"
-                        </p>
-                        
-                        <div class="openvas-cta">
-                            <a href="mailto:contact@cyber-secours-brest.fr?subject=Demande%20OpenVAS" class="cta-button openvas-button">
-                                <span>📧 Demander l'installation OpenVAS</span>
-                            </a>
-                            <a href="tel:+332XXXXXXXX" class="cta-button">
-                                <span>📞 En savoir plus</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: var(--spacing-lg); padding-top: var(--spacing-md); border-top: 1px solid var(--couleur-bordure);">
-                    <p style="text-align: center; font-size: 0.9rem; color: var(--couleur-texte-secondaire);">
-                        <small>💡 Conseil : OpenVAS fonctionne mieux sur une machine dédiée ou un serveur. Nous pouvons vous conseiller sur les options d'hébergement les plus adaptées à votre budget.</small>
-                    </p>
-                </div>
-            </section>
-
-            <section class="cta-section animate-fade-in delay-4" aria-labelledby="contact-title">
-                <h2 id="contact-title" class="cta-title">Prêt à sécuriser votre structure ?</h2>
-                <p>Contactez notre association pour un audit initial gratuit de vos besoins en sécurité.</p>
-                <p class="cta-note">Réponse sous 48h • Tous nos services sont gratuits • Accompagnement solidaire</p>
-                <a href="mailto:contact@cyber-secours-brest.fr" class="cta-button">
-                    <span>📧 Contacter l'association</span>
-                </a>
-                <p style="margin-top: var(--spacing-sm); font-size: 0.9rem;">
-                    Ou par téléphone : <a href="tel:+332XXXXXXXX" style="color: var(--couleur-association); text-decoration: none; font-weight: 500;">02 XX XX XX XX</a>
-                </p>
-            </section>
-        </main>
-
-        <footer class="animate-fade-in delay-4">
-            <div class="footer-content">
-                <p>Une initiative solidaire, propulsée par la passion du Libre et de la sécurité numérique.</p>
-                
-                <div class="legal-info">
-                    <p><span class="association-id">Cyber-Secours Brest</span> - Association Loi 1901</p>
-                    <p>Siège social : Brest • SIRET : XXXXXXXXXXXXXX • RNA : WXXXXXXXXX</p>
-                    <p>🎁 <strong>Tous nos services sont gratuits</strong> pour les petites structures et associations</p>
-                </div>
-                
-                <p style="margin-top: var(--spacing-sm);">
-                    <small>© 2024 Association Cyber-Secours Brest • Tous nos outils sont Open Source et respectueux de votre vie privée</small>
-                </p>
-            </div>
-        </footer>
     </div>
 
-    <script>
-        // Améliorations interactives légères
-        document.addEventListener('DOMContentLoaded', function() {
-            // Ajout d'un smooth scroll amélioré
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+    <footer>
+        <p>© 2025 [Nom de l'Association] – Tous droits réservés | Association loi 1901</p>
+        <p>Basée en France – Ouverte à toutes les structures du territoire</p>
+    </footer>
 
-            // Animation au scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in');
-                    }
-                });
-            }, observerOptions);
-
-            // Observer les sections
-            document.querySelectorAll('.section, .cta-section, .about-association, .openvas-section').forEach(section => {
-                observer.observe(section);
-            });
-
-            // Amélioration des boutons CTA
-            const ctaButtons = document.querySelectorAll('.cta-button');
-            ctaButtons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px) scale(1.02)';
-                });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Animation pour la bannière association
-            const associationBadge = document.querySelector('.association-badge');
-            if (associationBadge) {
-                setInterval(() => {
-                    associationBadge.style.transform = 'scale(1.05)';
-                    setTimeout(() => {
-                        associationBadge.style.transform = 'scale(1)';
-                    }, 300);
-                }, 5000);
-            }
-
-            // Animation pour le badge GRATUIT
-            const gratuitBadge = document.querySelector('.gratuit-badge');
-            if (gratuitBadge) {
-                setInterval(() => {
-                    gratuitBadge.style.transform = 'rotate(-2deg)';
-                    setTimeout(() => {
-                        gratuitBadge.style.transform = 'rotate(2deg)';
-                    }, 500);
-                    setTimeout(() => {
-                        gratuitBadge.style.transform = 'rotate(0deg)';
-                    }, 1000);
-                }, 8000);
-            }
-        });
-    </script>
 </body>
 </html>
