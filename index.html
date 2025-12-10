@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CyberAide – Sécurité numérique gratuite pour les associations (et TPE à impact social)</title>
+    <title>CyberAide – Sécurité numérique gratuite pour les associations et TPE à impact social</title>
     <style>
         /* ===== BANDEAU TEMPORAIRE ===== */
         .temporary-banner {
-            background: #fff3cd;
-            color: #000;
+            background: #fff8e1;
+            color: #8B0000;
             text-align: center;
             padding: 0.8rem 1rem;
-            font-weight: 700;
+            font-weight: bold;
             font-size: 1.05rem;
-            border-bottom: 2px solid #ffe066;
+            border-bottom: 2px solid #ffc107;
             z-index: 1000;
             position: relative;
         }
@@ -48,65 +48,36 @@
             overflow-x: hidden;
         }
 
-        /* ===== HEADER ===== */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -80px;
-            left: -60px;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.07);
-        }
-
-        header h1 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            margin-bottom: 0.8rem;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        header p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.95;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* ===== CONTAINER & SECTIONS ===== */
         .container {
-            max-width: 1000px;
-            margin: -3rem auto 3rem;
+            max-width: 900px;
+            margin: 2rem auto;
             padding: 0 1.5rem;
-            position: relative;
-            z-index: 10;
         }
 
+        /* ===== TITRE PRINCIPAL (une seule fois) ===== */
+        .main-title {
+            text-align: center;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .main-title h1 {
+            color: #DC143C; /* rouge sang */
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .main-title p {
+            color: #DC143C;
+            font-size: 1.35rem;
+            font-weight: bold;
+            margin-top: 0.7rem;
+            max-width: 800px;
+            margin: 0.8rem auto 0;
+        }
+
+        /* ===== SECTIONS ===== */
         section {
             background: var(--white);
             padding: 2rem;
@@ -151,7 +122,7 @@
             font-weight: 700;
         }
 
-        /* ===== LISTES & OUTILS ===== */
+        /* ===== LISTES ===== */
         ul.tools li {
             margin-bottom: 1.1rem;
             padding-left: 1.8rem;
@@ -192,7 +163,7 @@
             color: var(--primary);
         }
 
-        /* ===== CALL TO ACTION ===== */
+        /* ===== CTA ===== */
         .cta {
             text-align: center;
             margin-top: 2.5rem;
@@ -227,13 +198,14 @@
             color: var(--gray);
             font-size: 0.95rem;
             border-top: 1px solid #eee;
+            margin-top: 3rem;
         }
 
         footer p {
             margin: 0.4rem 0;
         }
 
-        /* ===== ANIMATIONS D'APPARITION ===== */
+        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -245,35 +217,28 @@
             }
         }
 
-        section {
+        section, .main-title {
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        section:nth-child(1) { animation-delay: 0.1s; }
-        section:nth-child(2) { animation-delay: 0.2s; }
-        section:nth-child(3) { animation-delay: 0.3s; }
-        section:nth-child(4) { animation-delay: 0.4s; }
-        section:nth-child(5) { animation-delay: 0.5s; }
-        section:nth-child(6) { animation-delay: 0.6s; }
+        .main-title { animation-delay: 0.1s; }
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .temporary-banner {
-                font-size: 0.95rem;
-                padding: 0.6rem 1rem;
+            .main-title h1 {
+                font-size: 2.2rem;
             }
-            header h1 {
-                font-size: 2rem;
-            }
-            header p {
-                font-size: 1.05rem;
+            .main-title p {
+                font-size: 1.15rem;
             }
             h2 {
                 font-size: 1.5rem;
-            }
-            .container {
-                margin-top: -2rem;
             }
             section {
                 padding: 1.6rem;
@@ -283,12 +248,16 @@
         @media (max-width: 480px) {
             .temporary-banner {
                 font-size: 0.9rem;
+                padding: 0.6rem 1rem;
             }
-            header {
-                padding: 2rem 1.2rem;
+            .main-title {
+                margin: 1.5rem 0 2rem;
             }
-            header h1 {
-                font-size: 1.7rem;
+            .main-title h1 {
+                font-size: 1.9rem;
+            }
+            .main-title p {
+                font-size: 1.05rem;
             }
             .cta a {
                 padding: 0.9rem 2rem;
@@ -299,17 +268,18 @@
 </head>
 <body>
 
-    <!-- 🔺 BANDEAU TEMPORAIRE -->
+    <!-- BANDEAU TEMPORAIRE -->
     <div class="temporary-banner">
         ⚠️ ATTENTION : L’ASSO EST EN COURS DE CONCEPTION — RIEN N’EST ENCORE DÉPOSÉ.
     </div>
 
-    <header>
-        <h1>CyberAide</h1>
-        <p>Sécurité numérique <strong>gratuite</strong> d’abord pour les associations, puis pour les TPE et entreprises à impact social</p>
-    </header>
-
     <div class="container">
+
+        <!-- TITRE UNIQUE DANS LA PAGE -->
+        <div class="main-title">
+            <h1>CyberAide</h1>
+            <p>Sécurité numérique gratuite d’abord pour les associations, puis pour les TPE et entreprises à caractère social</p>
+        </div>
 
         <section>
             <h2>Conditions d’intervention</h2>
@@ -350,49 +320,34 @@
                 Nous offrons un accompagnement <strong>100 % gratuit</strong> en cybersécurité aux <strong>associations</strong>, et, dans la mesure de nos capacités, aux <strong>très petites entreprises (TPE) et structures à caractère social</strong> (coopératives, SCIC, ESUS, etc.).
             </p>
             <p>
-                Parce que la cybersécurité ne devrait pas être un luxe réservé aux grandes entreprises, nous mettons notre expertise au service de celles et ceux qui œuvrent pour l’intérêt général. Ensemble, rendons le numérique plus sûr, plus éthique et plus accessible.
+                Parce que la cybersécurité ne devrait pas être un luxe réservé aux grandes entreprises, nous mettons notre expertise au service de celles et ceux qui œuvrent pour l’intérêt général.
             </p>
         </section>
 
         <section class="firstaid">
             <h2>🩹 Trousse de secours cybersécurité</h2>
             <p>
-                Une sélection minimaliste d’outils <strong>gratuits, libres et simples</strong> pour protéger l’essentiel — sans devenir expert·e.
+                Une sélection minimaliste d’outils <strong>gratuits, libres et simples</strong> pour protéger l’essentiel :
             </p>
             <ul>
-                <li><strong>KeePassXC</strong> — Coffre-fort chiffré pour vos mots de passe. Fini les post-its et les Excel non sécurisés.</li>
-                <li><strong>Fail2ban</strong> — Bloque automatiquement les tentatives de piratage (SSH, WordPress, etc.) en bannissant les IP malveillantes.</li>
-                <li><strong>Pi-hole</strong> — Filtre réseau qui bloque pubs, trackers et domaines malveillants <em>avant</em> qu’ils n’atteignent vos postes.</li>
-                <li><strong>ModSecurity + CRS</strong> — Bouclier gratuit devant votre site web pour bloquer injections, XSS et autres attaques automatiques.</li>
-                <li><strong>Ubuntu LTS</strong> — Système d’exploitation stable, sécurisé, sans publicité, idéal pour les postes bureautiques.</li>
+                <li><strong>KeePassXC</strong> — Coffre-fort chiffré pour vos mots de passe.</li>
+                <li><strong>Fail2ban</strong> — Bloque les tentatives de piratage (SSH, WordPress, etc.).</li>
+                <li><strong>Pi-hole</strong> — Filtre réseau contre pubs, trackers et malwares.</li>
+                <li><strong>ModSecurity + CRS</strong> — Bouclier devant votre site web.</li>
+                <li><strong>Ubuntu LTS</strong> — OS stable, sécurisé, sans publicité.</li>
             </ul>
             <p>
-                <em>Bonus :</em> activez la double authentification (2FA) partout, mettez à jour vos logiciels mensuellement, et sauvegardez vos données.
+                <em>Bonus :</em> activez la double authentification, mettez à jour vos logiciels, sauvegardez vos données.
             </p>
-        </section>
-
-        <section>
-            <h2>Nos outils open source</h2>
-            <p>
-                Nous vous accompagnons dans le choix, l’installation et l’utilisation de solutions <strong>libres, gratuites et respectueuses de votre vie privée</strong> :
-            </p>
-            <ul class="tools">
-                <li><strong>Ubuntu</strong> — Un système d’exploitation stable, sécurisé et sans publicité, parfait pour le bureau ou le serveur.</li>
-                <li><strong>KeePassXC</strong> — Gérez tous vos mots de passe dans un coffre-fort chiffré, accessible uniquement par vous.</li>
-                <li><strong>Wazuh</strong> — Surveillez en temps réel les menaces sur vos machines avec une solution open source puissante.</li>
-                <li><strong>Nuclei</strong> — Détectez automatiquement les failles de sécurité <em>sur vos propres services</em> (après installation et formation).</li>
-                <li><strong>ModSecurity + CRS</strong> — Un bouclier devant votre site web qui bloque les attaques courantes, sans intervention quotidienne.</li>
-                <li><strong>Pi-hole</strong> — Protégez tout votre réseau local contre le tracking et les malwares via le filtrage DNS.</li>
-            </ul>
         </section>
 
         <section>
             <h2>Pourquoi nous faire confiance ?</h2>
             <ul>
-                <li><strong>100 % bénévole</strong> — Une équipe passionnée par le numérique éthique et la solidarité.</li>
-                <li><strong>Pédagogie avant tout</strong> — Nous expliquons, nous formons, nous ne jugeons pas.</li>
-                <li><strong>Zéro coût</strong> — Aucune facture, aucune souscription, aucune publicité.</li>
-                <li><strong>Vie privée garantie</strong> — Vos données ne sont jamais stockées, vendues ou analysées.</li>
+                <li><strong>100 % bénévole</strong> — Passionné·e par le numérique éthique.</li>
+                <li><strong>Pédagogie avant tout</strong> — On explique, on ne juge pas.</li>
+                <li><strong>Zéro coût</strong> — Aucune facture, aucune publicité.</li>
+                <li><strong>Vie privée garantie</strong> — Vos données ne sont jamais stockées.</li>
             </ul>
         </section>
 
@@ -403,8 +358,8 @@
     </div>
 
     <footer>
-        <p>© 2025 CyberAide – Association loi 1901 à but non lucratif</p>
-        <p>Basée en France 🇫🇷 | Ouverte en priorité aux associations, puis aux TPE à impact social</p>
+        <p>© 2025 CyberAide – Projet en cours de structuration</p>
+        <p>Basé en France 🇫🇷 | Priorité aux associations et TPE à impact social</p>
     </footer>
 
 </body>
