@@ -1,3 +1,5 @@
+
+    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -169,6 +171,11 @@
             font-size: 1.1rem;
         }
 
+        .limitation ul li::before {
+            content: "🚫";
+            color: #e74c3c;
+        }
+
         /* ===== CALL TO ACTION ===== */
         .cta {
             text-align: center;
@@ -228,9 +235,10 @@
         }
 
         section:nth-child(1) { animation-delay: 0.1s; }
-        section:nth-child(2) { animation-delay: 0.25s; }
-        section:nth-child(3) { animation-delay: 0.4s; }
-        section:nth-child(4) { animation-delay: 0.55s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
@@ -290,6 +298,23 @@
             </p>
         </section>
 
+        <section class="limitation">
+            <h2>Ce que je ne fais PAS</h2>
+            <p>
+                <strong>Je ne réalise aucune action offensive, intrusive ou à risque juridique.</strong> Point final.
+            </p>
+            <ul>
+                <li><strong>Pas de pentest (test d’intrusion)</strong>, <strong>pas de red teaming</strong>, <strong>pas de scanning non autorisé</strong>.</li>
+                <li>Je <strong>n’attaque jamais</strong> vos systèmes, vos serveurs, vos sites web ou vos collaborateurs.</li>
+                <li>Concernant <strong>Nuclei</strong> : je peux l’<strong>installer sur votre machine</strong> et vous <strong>montrer comment l’utiliser</strong> sur <em>votre propre site web</em>.</li>
+                <li><strong>Je ne lance aucun scan moi-même.</strong> Une fois installé, <strong>c’est vous qui scannez votre propre infrastructure</strong>, depuis votre propre réseau, avec votre propre consentement.</li>
+                <li>Mon rôle est <strong>pédagogique et défensif</strong> : vous rendre autonome, pas tester vos défenses à votre place.</li>
+            </ul>
+            <p>
+                Si vous cherchez un pentester certifié : allez-y, engagez-en un. Mais ce n’est <em>ni mon rôle, ni mon envie, ni ce que j’offre ici</em>.
+            </p>
+        </section>
+
         <section>
             <h2>Notre mission</h2>
             <p>
@@ -309,7 +334,7 @@
                 <li><strong>Ubuntu</strong> — Un système d’exploitation stable, sécurisé et sans publicité, parfait pour le bureau ou le serveur.</li>
                 <li><strong>KeePassXC</strong> — Gérez tous vos mots de passe dans un coffre-fort chiffré, accessible uniquement par vous.</li>
                 <li><strong>Wazuh</strong> — Surveillez en temps réel les menaces sur vos machines avec une solution open source puissante.</li>
-                <li><strong>Nuclei</strong> — Détectez automatiquement les failles de sécurité sur vos sites ou services avant les pirates.</li>
+                <li><strong>Nuclei</strong> — Détectez automatiquement les failles de sécurité <em>sur vos propres services</em> (après installation et formation).</li>
             </ul>
         </section>
 
