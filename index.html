@@ -1,15 +1,338 @@
-<section>
-    <h2>Conditions d’intervention</h2>
-    <p>
-        Mon accompagnement est offert <strong>gratuitement</strong> et avec bienveillance, mais il repose sur quelques principes non négociables :
-    </p>
-    <ul>
-        <li>Je me réserve le droit de décliner toute demande si, à mon avis, votre structure a <strong>les moyens financiers</strong> de faire appel à un professionnel rémunéré.</li>
-        <li>Je ne travaille pas avec les entreprises ou organisations qui <strong>exploitent leurs employé·es</strong>, pratiquent le harcèlement, la précarité abusive, ou dont l’éthique managériale ou sociale me choque.</li>
-        <li>Si vous me prenez pour un employé à votre service, <strong>je m’en vais</strong>. Je suis ici en soutien, pas en subordination.</li>
-        <li>Et si jamais je vous vois <strong>maltraiter, humilier ou manquer de respect</strong> à vos collaborateurs ou partenaires devant moi… je range mon clavier et je quitte les lieux. Je ne suis <em>pas venu·e pour souffrir</em>.</li>
-    </ul>
-    <p>
-        Ce n’est pas de la rigidité : c’est du respect — pour vous, pour moi, et pour les valeurs qui fondent cette initiative.
-    </p>
-</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberAide – Sécurité numérique gratuite pour les associations (et TPE à impact social)</title>
+    <style>
+        /* ===== VARIABLES GLOBALES ===== */
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #00c853;
+            --secondary-dark: #009624;
+            --dark: #2c3e50;
+            --light: #f9f9f9;
+            --gray: #7f8c8d;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            background-color: var(--light);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -60px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== CONTAINER & SECTIONS ===== */
+        .container {
+            max-width: 1000px;
+            margin: -3rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            transition: var(--transition);
+        }
+
+        section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        /* ===== LISTES & OUTILS ===== */
+        ul.tools li {
+            margin-bottom: 1.1rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        ul.tools li::before {
+            content: "🛡️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.6rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* ===== CALL TO ACTION ===== */
+        .cta {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta a {
+            background: linear-gradient(to right, var(--secondary), var(--secondary-dark));
+            color: white;
+            padding: 1rem 2.8rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+
+        .cta a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 200, 83, 0.5);
+            background: linear-gradient(to right, var(--secondary-dark), #007e33);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: #f1f5f9;
+            color: var(--gray);
+            font-size: 0.95rem;
+            border-top: 1px solid #eee;
+        }
+
+        footer p {
+            margin: 0.4rem 0;
+        }
+
+        /* ===== ANIMATIONS D'APPARITION ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.25s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.55s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1.05rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .container {
+                margin-top: -2rem;
+            }
+            section {
+                padding: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 2rem 1.2rem;
+            }
+            header h1 {
+                font-size: 1.7rem;
+            }
+            .cta a {
+                padding: 0.9rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CyberAide</h1>
+        <p>Sécurité numérique <strong>gratuite</strong> d’abord pour les associations, puis pour les TPE et entreprises à caractère social</p>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2>Notre mission</h2>
+            <p>
+                Nous offrons un accompagnement <strong>100 % gratuit</strong> en cybersécurité aux <strong>associations</strong>, et, dans la mesure de nos capacités, aux <strong>très petites entreprises (TPE) et structures à caractère social</strong> (coopératives, SCIC, ESUS, etc.).
+            </p>
+            <p>
+                Parce que la cybersécurité ne devrait pas être un luxe réservé aux grandes entreprises, nous mettons notre expertise au service de celles et ceux qui œuvrent pour l’intérêt général. Ensemble, rendons le numérique plus sûr, plus éthique et plus accessible.
+            </p>
+        </section>
+
+        <section>
+            <h2>Nos outils open source</h2>
+            <p>
+                Nous vous accompagnons dans le choix, l’installation et l’utilisation de solutions <strong>libres, gratuites et respectueuses de votre vie privée</strong> :
+            </p>
+            <ul class="tools">
+                <li><strong>Ubuntu</strong> — Un système d’exploitation stable, sécurisé et sans publicité, parfait pour le bureau ou le serveur.</li>
+                <li><strong>KeePassXC</strong> — Gérez tous vos mots de passe dans un coffre-fort chiffré, accessible uniquement par vous.</li>
+                <li><strong>Wazuh</strong> — Surveillez en temps réel les menaces sur vos machines avec une solution open source puissante.</li>
+                <li><strong>Nuclei</strong> — Détectez automatiquement les failles de sécurité sur vos sites ou services avant les pirates.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Pourquoi nous faire confiance ?</h2>
+            <ul>
+                <li><strong>100 % bénévole</strong> — Une équipe passionnée par le numérique éthique et la solidarité.</li>
+                <li><strong>Pédagogie avant tout</strong> — Nous expliquons, nous formons, nous ne jugeons pas.</li>
+                <li><strong>Zéro coût</strong> — Aucune facture, aucune souscription, aucune publicité.</li>
+                <li><strong>Vie privée garantie</strong> — Vos données ne sont jamais stockées, vendues ou analysées.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conditions d’intervention</h2>
+            <p>
+                Mon accompagnement est offert <strong>gratuitement</strong> et avec bienveillance, mais il repose sur quelques principes non négociables :
+            </p>
+            <ul>
+                <li>Je me réserve le droit de décliner toute demande si, à mon avis, votre structure a <strong>les moyens financiers</strong> de faire appel à un professionnel rémunéré.</li>
+                <li>Je ne travaille pas avec les entreprises ou organisations qui <strong>exploitent leurs employé·es</strong>, pratiquent le harcèlement, la précarité abusive, ou dont l’éthique managériale ou sociale me choque.</li>
+                <li>Si vous me prenez pour un employé à votre service, <strong>je m’en vais</strong>. Je suis ici en soutien, pas en subordination.</li>
+                <li>Et si jamais je vous vois <strong>maltraiter, humilier ou manquer de respect</strong> à vos collaborateurs ou partenaires devant moi… je range mon clavier et je quitte les lieux. Je ne suis <em>pas venu·e pour souffrir</em>.</li>
+            </ul>
+            <p>
+                Ce n’est pas de la rigidité : c’est du respect — pour vous, pour moi, et pour les valeurs qui fondent cette initiative.
+            </p>
+        </section>
+
+        <div class="cta">
+            <a href="mailto:contact@cyberaide.org">👉 Demandez de l’aide dès maintenant</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 CyberAide – Association loi 1901 à but non lucratif</p>
+        <p>Basée en France 🇫🇷 | Ouverte en priorité aux associations, puis aux TPE à impact social</p>
+    </footer>
+
+</body>
+</html>
