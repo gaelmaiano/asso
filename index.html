@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CyberAide – Sécurité numérique gratuite pour les associations (et TPE à impact social)</title>
     <style>
+        /* ===== BANDEAU TEMPORAIRE ===== */
+        .temporary-banner {
+            background: #fff3cd;
+            color: #000;
+            text-align: center;
+            padding: 0.8rem 1rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-bottom: 2px solid #ffe066;
+            z-index: 1000;
+            position: relative;
+        }
+
         /* ===== VARIABLES GLOBALES ===== */
         :root {
             --primary: #1a73e8;
@@ -246,6 +259,10 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
+            .temporary-banner {
+                font-size: 0.95rem;
+                padding: 0.6rem 1rem;
+            }
             header h1 {
                 font-size: 2rem;
             }
@@ -264,6 +281,9 @@
         }
 
         @media (max-width: 480px) {
+            .temporary-banner {
+                font-size: 0.9rem;
+            }
             header {
                 padding: 2rem 1.2rem;
             }
@@ -279,9 +299,14 @@
 </head>
 <body>
 
+    <!-- 🔺 BANDEAU TEMPORAIRE -->
+    <div class="temporary-banner">
+        ⚠️ ATTENTION : L’ASSO EST EN COURS DE CONCEPTION — RIEN N’EST ENCORE DÉPOSÉ.
+    </div>
+
     <header>
         <h1>CyberAide</h1>
-        <p>Sécurité numérique <strong>gratuite</strong> d’abord pour les associations, puis pour les TPE et entreprises à caractère social</p>
+        <p>Sécurité numérique <strong>gratuite</strong> d’abord pour les associations, puis pour les TPE et entreprises à impact social</p>
     </header>
 
     <div class="container">
@@ -372,7 +397,7 @@
         </section>
 
         <div class="cta">
-            <a href="mailto:gaelmaiano@gmail.com">👉 Demandez de l’aide dès maintenant</a>
+            <a href="mailto:contact@cyberaide.org">👉 Demandez de l’aide dès maintenant</a>
         </div>
 
     </div>
